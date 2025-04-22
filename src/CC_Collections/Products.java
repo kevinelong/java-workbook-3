@@ -33,13 +33,6 @@ public class Products {
 
         //INPUT
         ArrayList<InventoryItem> assorted = new ArrayList<InventoryItem>();
-        assorted.add(new InventoryItem(111,"carmel", 0.99, "Candy"));
-        assorted.add(new InventoryItem(111,"pencil", 0.99, "Office Supplies"));
-        assorted.add(new InventoryItem(222,"paper", 12.99, "Office Supplies"));
-        assorted.add(new InventoryItem(333,"mouse", 29.99, "Computer Accessories"));
-        assorted.add(new InventoryItem(111,"ruler", 0.99, "Office Supplies"));
-        assorted.add(new InventoryItem(222,"eraser", 12.99, "Office Supplies"));
-        assorted.add(new InventoryItem(333,"keyboard", 29.99, "Computer Accessories"));
 
         // CATEGORIZE - GROUP BY DEPARTMENT NAME
         for(InventoryItem item : assorted){

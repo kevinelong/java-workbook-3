@@ -1,4 +1,4 @@
-package ExceptionsAndReading;
+package AA_ExceptionsAndReading;
 
 import java.io.*;
 import java.util.Scanner;

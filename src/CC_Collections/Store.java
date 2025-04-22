@@ -30,13 +30,29 @@ class Product {
 }
 
 public class Store {
-    public static void main(String[] args) throws FileNotFoundException {
-        /// INPUT ///
+    public static void main(String[] args) {
+        ArrayList<Product> inventory = getInventory();
+        System.out.println("We carry the following inventory: ");
+        for (Product p : inventory) {
+            System.out.printf("id: %d %s - Price: $%.2f\n",
+                    p.getId(), p.getName(), p.getPrice());
+        }
+    }
+
+    public static ArrayList<Product> getInventory() {
         ArrayList<Product> inventory = new ArrayList<Product>();
+// this method loads product objects into inventory
+// and its details are not shown
         inventory.add(new Product(111,"pencil",0.99));
         inventory.add(new Product(222,"paper",12.99));
-        FileInputStream fis = new FileInputStream("inventory.csv");
-        Scanner scanner = new Scanner(fis);
+
+
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new FileInputStream("inventory.csv"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         while (scanner.hasNextLine()) {
             String[] parts = scanner.nextLine().split("\\|");
             inventory.add(new Product(
@@ -46,14 +62,6 @@ public class Store {
             ));
         }
         scanner.close();
-
-        /// OUTPUT ////////////////////////////////////////////
-        String sought = "am";
-        System.out.println("We carry the following inventory: ");
-        for (Product p : inventory) {
-            if(p.getName().contains(sought)) {
-                System.out.printf("id: %d %s - Price: $%.2f\n", p.getId(), p.getName(), p.getPrice());
-            }
-        }
+        return inventory;
     }
 }
